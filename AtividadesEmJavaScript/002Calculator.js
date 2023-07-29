@@ -1,9 +1,19 @@
 //habilitando input através do readline-sync
 const readline = require('readline-sync');
 
+//função título
+function titulo(){
+    console.log("------------------------------\n     C A L C U L A D O R A    \n------------------------------\n");
+}
+
+//função menu
+function menu(){
+    console.log('1. Soma\n2. Subtração\n3. Multiplicação\n4. Divisão\nR= ');
+}
+
 //função calculadora
-function calculadora(op,n1,n2){
-    let res = 0;
+function calc(n1,n2,op){
+    var res;
     switch(op){
         case 1:
             res = n1+n2;
@@ -18,27 +28,31 @@ function calculadora(op,n1,n2){
             res = n1/n2;
             break;
     }
-    return res;
 }
 
+//declaração da variável operador, menu, num1 e num2
 let operador;
+let me;
+let num1;
+let num2;
 
+//loop para calculadora
 do{
-    console.log("---------------------------------------\n         C A L C U L A D O R A         \n---------------------------------------\n\n");
-    console.log("1. Soma\n2. Subtração\n3. Multiplicação\n4. Divisão\n0. Sair\n");
+    titulo();
+    menu();
 
-    let operador = readline.questionInt('Escolha uma opção do menu: ');
+    me = readline.questionInt("\nSelecione uma opção: ");
 
-    if(operador == 0){
-        console.log('\nSaindo da calculadora...');
-    }else if(operador != 1 || operador != 2 || operador != 3 || operador != 4 || operador != 0){
-        console.log('\nEssa opção não existe!\n\n');
-    } else{
-        let num1 = readline.questionFloat('Digite o primeiro número: ');
-        let num2 = readline.questionFloat('Digite o segundo número: ');
+    if(me == 0){
+        console.log("\nSaindo da calculadora...");
+    }else if(me != 1 || me != 2 || me != 3 || me != 4 || me != 0){
+        console.log("\nEssa opção não existe!");
+    }else{
+        operador = me;
+        num1 = readline.questionFloat("\nDigite o primeiro número: ");
+        num2 = readline.questionFloat("\nDigite o segundo número: ");
 
-        console.log(calculadora(operador,num1,num2));
+        console.log(calc(num1,num2,operador));
     }
-    
 
-}while(operador != 0);
+}while (me != 0);
