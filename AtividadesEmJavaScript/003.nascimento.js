@@ -9,12 +9,15 @@ o sistema informará o erro e continuará perguntando até que um valor correto 
 //habilitando o input através da biblioteca readline-sync
 const readline = require('readline-sync');
 
-//
+//declaração e atribuição da variável condicional
 let anoCorreto = false;
 
+//input do nome do usuário
+let nome = readline.question('Digite seu nome completo: ');
+
+//laço de repetição while para o input de ano do usuário
 while(anoCorreto == false){
     try {
-         let nome = readline.question('Digite seu nome completo: ');
          let ano = readline.questionInt('Digite seu ano de nascimento, entre 1922 e 2022: ');
 
          if(isNaN(ano) == false){
@@ -22,17 +25,13 @@ while(anoCorreto == false){
                 anoCorreto = true;
                 console.log('\nNOME:',nome,'\nIDADE:', 2023-ano);
             }else{
-                anoCorreto = false;
-                console.log('\nERRO: ano inválido!\n');  
-            }
-         }else{
-            throw new Error('\nERRO: não é um número!\n')
+            throw new Error('não é um ano válido!\n')
          }
-        
+        }    
     } catch (error) {
-        console.error('Tente novamente!');
+        console.error('\nERRO: ', error.message);
+        continue;
     }
     
+
 }
-
-
