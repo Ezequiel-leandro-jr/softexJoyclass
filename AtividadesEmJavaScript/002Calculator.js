@@ -36,7 +36,7 @@ function calc(n1,n2,op){
     return msg;
 }
 
-//declaração da variável operador, menu, num1 e num2
+//declaração da variável operador, num1 e num2
 let operador;
 let num1;
 let num2;
